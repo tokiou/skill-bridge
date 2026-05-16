@@ -1,2 +1,4 @@
 .venv
 no-docs
+.env
+client_secret.json
