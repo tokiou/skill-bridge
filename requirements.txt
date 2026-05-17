@@ -1,0 +1,12 @@
+fastapi==0.121.1
+uvicorn==0.38.0
+sqlalchemy==2.0.44
+alembic==1.17.1
+asyncpg==0.31.0
+pydantic==2.13.4
+pydantic-settings==2.14.1
+python-dotenv==1.2.2
+PyJWT==2.10.1
+httpx==0.28.1
+google-auth==2.53.0
+requests==2.34.2

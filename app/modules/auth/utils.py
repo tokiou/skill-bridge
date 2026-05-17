@@ -3,8 +3,6 @@ from functools import lru_cache
 from authlib.integrations.starlette_client import OAuth
 from dotenv import load_dotenv
 import os
-from datetime import datetime, timezone, timedelta
-import jwt
 
 
 load_dotenv()
@@ -26,15 +24,3 @@ oauth.register(
     client_kwargs={"scope": "openid email profile"},
     server_metadata_url="https://accounts.google.com/.well-known/openid-configuration"
 )
-
-
-def create_access_token(settings, data: dict, expires_delta: timedelta | None = None, auth_method="password"):
-    to_encode = data.copy()
-    if expires_delta:
-        expire = datetime.now(timezone.utc) + expires_delta
-    else:
-        expire = datetime.now(timezone.utc) + timedelta(minutes=15)
-
-    to_encode.update({"exp": expire, "auth_method": auth_method})
-    encoded_jwt = jwt.encode(to_encode, settings.SECRET_KEY, algorithm=settings.ALGORITHM)
-    return encoded_jwt
